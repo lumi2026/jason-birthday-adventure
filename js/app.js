@@ -119,14 +119,27 @@ function startSuccessSequence() {
 
 function nextStep() {
   if (missionIndex === CONFIG.missions.length - 1) {
-    $("treasureLocation").textContent = CONFIG.giftLocation;
-    statusChip.textContent = "SUCCESS";
-    showScreen(finalScreen);
-    launchConfetti();
+    runBirthdayUnlock();
     return;
   }
   missionIndex += 1;
   loadMission();
+}
+
+function runBirthdayUnlock() {
+  const overlay = $("birthdayUnlock");
+  overlay.classList.add("active");
+  overlay.setAttribute("aria-hidden", "false");
+  statusChip.textContent = "UNLOCKING";
+
+  setTimeout(() => {
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+    $("treasureLocation").textContent = CONFIG.giftLocation;
+    statusChip.textContent = "SUCCESS";
+    showScreen(finalScreen);
+    launchConfetti();
+  }, 3300);
 }
 
 function launchConfetti() {
@@ -150,3 +163,24 @@ continueBtn.addEventListener("click", nextStep);
 answerInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") checkAnswer();
 });
+
+
+const fullscreenBtn = $("fullscreenBtn");
+
+function updateFullscreenLabel() {
+  fullscreenBtn.textContent = document.fullscreenElement ? "EXIT FULL SCREEN" : "FULL SCREEN";
+}
+
+fullscreenBtn.addEventListener("click", async () => {
+  try {
+    if (!document.fullscreenElement) {
+      await document.documentElement.requestFullscreen();
+    } else {
+      await document.exitFullscreen();
+    }
+  } catch (err) {
+    console.warn("Fullscreen mode is not available in this browser.", err);
+  }
+});
+
+document.addEventListener("fullscreenchange", updateFullscreenLabel);

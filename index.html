@@ -17,7 +17,7 @@
   <main class="game-shell">
     <header class="topbar">
       <div class="brand">REBEL MISSION CONTROL</div>
-      <div class="status-chip" id="statusChip">STANDBY</div>
+      <div class="top-actions"><button class="fullscreen-btn" id="fullscreenBtn" type="button">FULL SCREEN</button><div class="status-chip" id="statusChip">STANDBY</div></div>
     </header>
 
     <section class="screen active" id="introScreen">
@@ -74,6 +74,17 @@
           <div class="planet-location" id="planetLocation"></div>
           <button class="primary-btn" id="continueBtn">CONTINUE MISSION</button>
         </div>
+      </div>
+    </section>
+
+
+    <section class="birthday-unlock" id="birthdayUnlock" aria-hidden="true">
+      <div class="unlock-core">
+        <div class="unlock-small">FINAL CODE ACCEPTED</div>
+        <div class="unlock-code">7 • 2 • 5</div>
+        <div class="unlock-birthday">BIRTHDAY SIGNATURE MATCH</div>
+        <div class="unlock-ring"></div>
+        <div class="unlock-flash">TREASURE VAULT UNLOCKED</div>
       </div>
     </section>
 
