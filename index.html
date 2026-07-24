@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operation: Birthday Treasure</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="space-bg" aria-hidden="true">
+    <span class="star s1"></span><span class="star s2"></span><span class="star s3"></span>
+    <span class="star s4"></span><span class="star s5"></span><span class="star s6"></span>
+    <span class="star s7"></span><span class="star s8"></span><span class="star s9"></span>
+    <span class="star s10"></span><span class="nebula"></span>
+  </div>
+
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand">REBEL MISSION CONTROL</div>
+      <div class="status-chip" id="statusChip">STANDBY</div>
+    </header>
+
+    <section class="screen active" id="introScreen">
+      <div class="eyebrow">REBEL ALLIANCE TRANSMISSION</div>
+      <h1>OPERATION:<br><span>BIRTHDAY TREASURE</span></h1>
+      <div class="transmission-card">
+        <p><strong>Padawan Jason,</strong></p>
+        <p>Today is your <strong>8th birthday</strong>.</p>
+        <p>The Empire has hidden a mysterious birthday treasure somewhere inside your home.</p>
+        <p>Five Jedi Trials have been prepared to test your wisdom, courage, and problem-solving skills.</p>
+        <p>Solve each paper puzzle. Enter the correct authorization code. Rebel Mission Control will then reveal the coordinates of the next secret envelope.</p>
+        <p class="force-line">May the Force be with you.</p>
+      </div>
+      <button class="primary-btn" id="startBtn">BEGIN MISSION</button>
+    </section>
+
+    <section class="screen" id="missionScreen">
+      <div class="galaxy-panel">
+        <div class="galaxy-title">GALAXY ROUTE</div>
+        <div class="route" id="route"></div>
+        <div class="mission-count" id="missionCount"></div>
+      </div>
+
+      <div class="mission-card">
+        <div class="eyebrow" id="missionEyebrow">MISSION I</div>
+        <h2 id="missionTitle">JEDI TRAINING</h2>
+        <p class="mission-message" id="missionMessage"></p>
+
+        <label class="prompt-label" for="answerInput">ENTER AUTHORIZATION CODE</label>
+        <input
+          id="answerInput"
+          class="code-input"
+          inputmode="text"
+          autocomplete="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          aria-label="Authorization code"
+        />
+        <button class="primary-btn" id="decryptBtn">DECRYPT TRANSMISSION</button>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="successScreen">
+      <div class="success-box">
+        <div class="access-granted">ACCESS GRANTED</div>
+        <div class="decrypt-wrap">
+          <div class="decrypt-label">DECRYPTING REBEL TRANSMISSION...</div>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+        <div class="destination hidden" id="destinationBox">
+          <div class="eyebrow">NEW COORDINATES RECEIVED</div>
+          <div class="planet-name" id="planetName"></div>
+          <div class="planet-location" id="planetLocation"></div>
+          <button class="primary-btn" id="continueBtn">CONTINUE MISSION</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="finalScreen">
+      <div class="final-card">
+        <div class="eyebrow">FINAL TRANSMISSION</div>
+        <h2>MISSION COMPLETE</h2>
+        <div class="rank-stars">★ ★ ★ ★ ★</div>
+        <p>Congratulations, Jedi Master Jason.</p>
+        <p>You completed all five trials.</p>
+        <div class="treasure-title">TREASURE FOUND</div>
+        <div class="treasure-location" id="treasureLocation">BEDROOM CLOSET</div>
+        <div class="final-meta">
+          <span>AGE 8</span>
+          <span>CODE 725</span>
+          <span>STATUS: SUCCESS</span>
+        </div>
+      </div>
+      <div class="confetti" id="confetti"></div>
+    </section>
+  </main>
+
+  <script src="js/missions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
